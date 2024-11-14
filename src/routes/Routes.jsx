@@ -3,6 +3,9 @@ import Home from "../pages/Home";
 import MainLayout from "../layout/MainLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Orders from "../components/Orders";
+import PrivateRoutes from "./PrivateRoutes";
+import Profile from "../components/Profile";
 
 
 const router = createBrowserRouter(
@@ -23,6 +26,18 @@ const router = createBrowserRouter(
           path: "register",
           element: <Register></Register>,
         },
+        {
+          path: "orders",
+          element: (
+            <PrivateRoutes>
+              <Orders></Orders>
+            </PrivateRoutes>
+          ),
+        },
+        {
+          path: 'profile',
+          element:<PrivateRoutes><Profile></Profile></PrivateRoutes>
+        }
       ],
     },
   ],
@@ -35,7 +50,7 @@ const router = createBrowserRouter(
       v7_skipActionErrorRevalidation: true,
       v7_startTransition: true,
     },
-  },
+  }
 );
 
 
